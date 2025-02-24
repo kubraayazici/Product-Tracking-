@@ -1,0 +1,15 @@
+/Users/sunbul/Documents/Workspace/LocalUS Case Study Product Tracking/src/main/java/com/example/producttracking/model/User.java
+/Users/sunbul/Documents/Workspace/LocalUS Case Study Product Tracking/src/main/java/com/example/producttracking/dto/LoginRequest.java
+/Users/sunbul/Documents/Workspace/LocalUS Case Study Product Tracking/src/main/java/com/example/producttracking/controller/UserController.java
+/Users/sunbul/Documents/Workspace/LocalUS Case Study Product Tracking/src/main/java/com/example/producttracking/service/BaseService.java
+/Users/sunbul/Documents/Workspace/LocalUS Case Study Product Tracking/src/main/java/com/example/Main.java
+/Users/sunbul/Documents/Workspace/LocalUS Case Study Product Tracking/src/main/java/com/example/producttracking/repository/UserRepository.java
+/Users/sunbul/Documents/Workspace/LocalUS Case Study Product Tracking/src/main/java/com/example/producttracking/controller/ProductController.java
+/Users/sunbul/Documents/Workspace/LocalUS Case Study Product Tracking/src/main/java/com/example/producttracking/model/BaseEntity.java
+/Users/sunbul/Documents/Workspace/LocalUS Case Study Product Tracking/src/main/java/com/example/producttracking/controller/BaseController.java
+/Users/sunbul/Documents/Workspace/LocalUS Case Study Product Tracking/src/main/java/com/example/producttracking/service/ProductService.java
+/Users/sunbul/Documents/Workspace/LocalUS Case Study Product Tracking/src/main/java/com/example/producttracking/ProductTrackingApplication.java
+/Users/sunbul/Documents/Workspace/LocalUS Case Study Product Tracking/src/main/java/com/example/producttracking/service/UserService.java
+/Users/sunbul/Documents/Workspace/LocalUS Case Study Product Tracking/src/main/java/com/example/producttracking/repository/BaseRepository.java
+/Users/sunbul/Documents/Workspace/LocalUS Case Study Product Tracking/src/main/java/com/example/producttracking/repository/ProductRepository.java
+/Users/sunbul/Documents/Workspace/LocalUS Case Study Product Tracking/src/main/java/com/example/producttracking/model/Product.java
