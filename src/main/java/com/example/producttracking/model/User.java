@@ -23,5 +23,5 @@ public class User extends BaseEntity {
     private String password;
 
     @Column(name = "is_active", nullable = false)
-    private Boolean isActive = true;
+    private Boolean isActive = false;
 }
