@@ -28,7 +28,7 @@ jobs:
       - name: Run Tests
         run: mvn test
       - name: Upload Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: jar-file
           path: target/producttracking-1.0-SNAPSHOT.jar
