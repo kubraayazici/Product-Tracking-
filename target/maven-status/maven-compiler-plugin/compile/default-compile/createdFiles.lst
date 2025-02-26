@@ -1,8 +1,11 @@
 com/example/producttracking/model/Product.class
 com/example/producttracking/controller/BaseController.class
 com/example/producttracking/model/BaseEntity.class
+com/example/producttracking/config/JwtAuthenticationFilter.class
 com/example/producttracking/controller/UserController.class
+com/example/producttracking/controller/AuthController.class
 com/example/producttracking/ProductTrackingApplication.class
+com/example/producttracking/config/JwtConfig.class
 com/example/producttracking/repository/UserRepository.class
 com/example/producttracking/model/User.class
 com/example/producttracking/service/UserService.class
@@ -13,3 +16,5 @@ com/example/producttracking/service/ProductService.class
 com/example/producttracking/repository/ProductRepository.class
 com/example/producttracking/repository/BaseRepository.class
 com/example/Main.class
+com/example/producttracking/config/SecurityConfig.class
+com/example/producttracking/service/AuthService.class
