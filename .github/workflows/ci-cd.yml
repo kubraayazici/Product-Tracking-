@@ -1,9 +1,11 @@
 name: CI/CD PIPELINE
+
 on:
   push:
     branches: [main, development]
   pull_request:
     branches: [main, development]
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -25,12 +27,23 @@ jobs:
         run: mvn clean install
       - name: Run Tests
         run: mvn test
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: jar-file
+          path: target/producttracking-1.0-SNAPSHOT.jar
+
   docker_build:
     runs-on: ubuntu-latest
     needs: build
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: jar-file
+          path: target  # hedef dizin olarak target klasörünü belirleyin
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       - name: Login to Docker Hub
@@ -44,6 +57,7 @@ jobs:
           context: .
           push: true
           tags: sunbul/producttracking:latest
+
   deploy:
     runs-on: ubuntu-latest
     needs: docker_build
@@ -58,8 +72,6 @@ jobs:
         run: |
           echo "${{ secrets.KUBE_CONFIG }}" > kubeconfig
           export KUBECONFIG=kubeconfig
-
       - name: Deploy to Kubernetes
         run: |
           kubectl apply -f deploy/
-
