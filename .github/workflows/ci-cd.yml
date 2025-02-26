@@ -28,7 +28,7 @@ jobs:
       - name: Run Tests
         run: mvn test
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: jar-file
           path: target/producttracking-1.0-SNAPSHOT.jar
@@ -40,7 +40,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
       - name: Download Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: jar-file
           path: target  # hedef dizin olarak target klasörünü belirleyin
