@@ -1,9 +1,11 @@
 package com.example.producttracking.config;
 
+import com.example.producttracking.repository.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -19,9 +21,10 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http, SecretKey jwtSecretKey) throws Exception {
-        JwtAuthenticationFilter jwtAuthenticationFilter = new JwtAuthenticationFilter(jwtSecretKey);
+    public SecurityFilterChain securityFilterChain(HttpSecurity http, SecretKey jwtSecretKey, UserRepository userRepository) throws Exception {
+        JwtAuthenticationFilter jwtAuthenticationFilter = new JwtAuthenticationFilter(jwtSecretKey, userRepository);
         http
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 // API'ler için CSRF'yi devre dışı bırakabiliriz
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize

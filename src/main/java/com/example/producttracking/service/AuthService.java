@@ -46,7 +46,7 @@ public class AuthService {
                 .claim("lastName", user.getLastName())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
-                .signWith(jwtSecret)
+                .signWith(jwtSecret, SignatureAlgorithm.HS512)
                 .compact();
     }
 

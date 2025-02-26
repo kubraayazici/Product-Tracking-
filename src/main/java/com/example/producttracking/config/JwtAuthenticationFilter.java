@@ -1,5 +1,7 @@
 package com.example.producttracking.config;
 
+import com.example.producttracking.model.User;
+import com.example.producttracking.repository.UserRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -15,13 +17,16 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import javax.crypto.SecretKey;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final SecretKey jwtSecret;
+    private final UserRepository userRepository;
 
-    public JwtAuthenticationFilter(SecretKey jwtSecret) {
+    public JwtAuthenticationFilter(SecretKey jwtSecret, UserRepository userRepository) {
         this.jwtSecret = jwtSecret;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -42,6 +47,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
                 // Token geçerliyse, kullanıcı kimliğini alın.
                 String email = claims.getSubject();
+
+                Optional<User> userOptional = userRepository.findByEmail(email);
+                if (userOptional.isEmpty() || !userOptional.get().getIsActive()) {
+                    response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "User is logged out or inactive");
+                    return;
+                }
                 // Kullanıcının yetkilerini de çekip Authentication nesnesi oluşturun.
                 UsernamePasswordAuthenticationToken authentication =
                         new UsernamePasswordAuthenticationToken(email, null, new ArrayList<>());
