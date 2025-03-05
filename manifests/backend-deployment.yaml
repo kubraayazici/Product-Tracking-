@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: producttracking-backend
+  namespace: product-tracking
 spec:
   replicas: 2
   selector:
@@ -13,20 +14,20 @@ spec:
         app: producttracking-backend
     spec:
       containers:
-        - name: producttracking-backend
-          image: producttracking:1.0
+        - name: backend
+          image: your-backend-image:latest
           ports:
             - containerPort: 8080
           env:
             - name: SPRING_DATASOURCE_URL
-              value: "jdbc:postgresql://producttracking-db:5432/product_tracking"
+              value: "jdbc:postgresql://postgresql-headless:5432/product_tracking"
             - name: SPRING_DATASOURCE_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: db-credentials
+                  name: postgres-secret
                   key: username
             - name: SPRING_DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: db-credentials
+                  name: postgres-secret
                   key: password

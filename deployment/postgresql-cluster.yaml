@@ -1,0 +1,20 @@
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: producttracking-db
+  namespace: default
+spec:
+  teamId: "producttracking"
+  volume:
+    size: 1Gi
+  numberOfInstances: 3
+  users:
+    product_user:  # Kullanıcı
+      - superuser
+      - createdb
+  databases:
+    product_tracking: product_user  # Database
+  postgresql:
+    version: "16"
+  enableMasterLoadBalancer: false
+  enableReplicaLoadBalancer: false

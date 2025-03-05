@@ -2,9 +2,10 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: producttracking-db
+  namespace: product-tracking
 spec:
-  serviceName: "producttracking-db"
-  replicas: 1
+  serviceName: "producttracking-db"  # Doğru Service Name
+  replicas: 3  # 1 Primary, 2 Replica
   selector:
     matchLabels:
       app: producttracking-db
@@ -24,22 +25,34 @@ spec:
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
-                  name: db-credentials
+                  name: postgres-secret
                   key: username
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: db-credentials
+                  name: postgres-secret
                   key: password
           volumeMounts:
-            - name: postgres-data
+            - name: postgres-storage
               mountPath: /var/lib/postgresql/data
+            - name: config-volume-postgres
+              mountPath: /etc/postgresql/postgresql.conf
+              subPath: postgresql.conf
+            - name: config-volume-hba
+              mountPath: /etc/postgresql/pg_hba.conf
+              subPath: pg_hba.conf
   volumeClaimTemplates:
     - metadata:
-        name: postgres-data
+        name: postgres-storage
       spec:
-        accessModes: [ "ReadWriteOnce" ]
-        storageClassName: "hostpath"
+        accessModes: ["ReadWriteOnce"]
         resources:
           requests:
-            storage: 10Gi
+            storage: 1Gi
+  volumes:
+    - name: config-volume-postgres
+      configMap:
+        name: postgresql-config
+    - name: config-volume-hba
+      configMap:
+        name: postgresql-config
