@@ -25,13 +25,10 @@ public class SecurityConfig {
         JwtAuthenticationFilter jwtAuthenticationFilter = new JwtAuthenticationFilter(jwtSecretKey, userRepository);
         http
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                // API'ler için CSRF'yi devre dışı bırakabiliriz
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/api/auth/**", "/api/users/register").permitAll()
-                        // Ürün işlemlerine erişim için kimlik doğrulaması zorunlu olsun
                         .requestMatchers("/api/products/**").authenticated()
-                        // Diğer tüm istekler de doğrulama gereksinimiyle korunur
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

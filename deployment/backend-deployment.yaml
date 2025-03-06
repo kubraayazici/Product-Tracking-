@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: producttracking-backend
-  namespace: default  # Eğer özel namespace kullanıyorsan değiştir
+  namespace: default
 spec:
   replicas: 2
   selector:
