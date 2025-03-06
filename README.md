@@ -155,8 +155,30 @@ Bu dosyayı Postman’e **import** ederek **tüm API’leri hızlıca test edebi
 Bu projede JWT (JSON Web Token) kullanılarak kimlik doğrulama yapılmaktadır.
 Aşağıdaki adımları takip ederek giriş yapabilir, JWT token alabilir ve API’leri test edebilirsiniz.
 
-📌 **Postman Collection’ı indirmek için:**  
+#### 📌 **Postman Collection’ı indirmek için:**  
 👉 [Product Tracking Postman Collection](https://raw.githubusercontent.com/kubraayazici/Product-Tracking-/development/Product%20Tracking%20API.postman_collection.json)
+#### 📌 **Json dosyasını Postman e Import Etme:**
+Eğer elinde bir Postman Collection JSON dosyası varsa (örneğin: product_tracking_postman.json), bunu Postman’e eklemek için:
+1.	Postman’i aç.
+2.	Sol üstteki “Import” butonuna tıkla.
+3.	“Upload Files” seçeneğini seç.
+4.	Koleksiyon JSON dosyanı (product_tracking_postman.json) seç.
+5.	“Open” butonuna bas ve yüklenmesini bekle.
+
+✅ Koleksiyonun artık Postman’de görünecektir.
+
+#### 📌 **GitHub veya URL’den Postman Collection’ı Import Etme:**
+Eğer Postman Collection JSON dosyanı GitHub’a yüklediysen veya bir link üzerinden eklemek istiyorsan:
+1.	Postman’i aç.
+2.	Sol üstteki “Import” butonuna tıkla.
+3.	“Link” (URL) seçeneğini seç.
+4.	Postman Collection’un JSON linkini gir (Örn:
+```sh
+https://raw.githubusercontent.com/kubraayazici/Product-Tracking-/main/product_tracking_postman.json
+```
+5.	“Continue” butonuna bas ve import işlemini tamamla.
+
+✅ Artık koleksiyonun Postman’de yüklenecek!
 
 ###  🚀 7️⃣ Authentication & Authorization (command line)
 
