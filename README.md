@@ -1,2 +1,1 @@
-# Product-Tracking-
-Production Ready Product Tracking Backend Service A robust backend service developed using Java and Spring Boot, featuring user management and product tracking (CRUD) functionalities. Deployed with Docker and orchestrated on Kubernetes, it leverages PostgreSQL 16 for persistent and resilient data storage.
+📌 Daha fazla detay için [GitHub Gist dokümantasyonuna buradan ulaşabilirsiniz](https://gist.github.com/kubraayazici/7fd2cea2c1d3ac39c64df9073b60a760).
