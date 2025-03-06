@@ -158,7 +158,7 @@ Aşağıdaki adımları takip ederek giriş yapabilir, JWT token alabilir ve API
 #### 📌 **Postman Collection’ı indirmek için:**  
 👉 [Product Tracking Postman Collection](https://raw.githubusercontent.com/kubraayazici/Product-Tracking-/development/Product%20Tracking%20API.postman_collection.json)
 #### 📌 **Json dosyasını Postman e Import Etme:**
-Eğer elinde bir Postman Collection JSON dosyası varsa (örneğin: product_tracking_postman.json), bunu Postman’e eklemek için:
+Eğer postman collection ı indirdiysen, bunu Postman’e eklemek için:
 1.	Postman’i aç.
 2.	Sol üstteki “Import” butonuna tıkla.
 3.	“Upload Files” seçeneğini seç.
@@ -168,7 +168,7 @@ Eğer elinde bir Postman Collection JSON dosyası varsa (örneğin: product_trac
 ✅ Koleksiyonun artık Postman’de görünecektir.
 
 #### 📌 **GitHub veya URL’den Postman Collection’ı Import Etme:**
-Eğer Postman Collection JSON dosyanı GitHub’a yüklediysen veya bir link üzerinden eklemek istiyorsan:
+Eğer Postman Collection JSON dosyanı Github üzerinden eklemek istiyorsan:
 1.	Postman’i aç.
 2.	Sol üstteki “Import” butonuna tıkla.
 3.	“Link” (URL) seçeneğini seç.
