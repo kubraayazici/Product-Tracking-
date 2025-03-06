@@ -38,14 +38,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (header != null && header.startsWith("Bearer ")) {
             String token = header.substring(7);
             try {
-                // Token'ı doğrula, burada Jwts.parserBuilder() gibi yöntemler kullanabilirsiniz.
                 Claims claims = Jwts.parserBuilder()
                         .setSigningKey(jwtSecret)
                         .build()
                         .parseClaimsJws(token)
                         .getBody();
 
-                // Token geçerliyse, kullanıcı kimliğini alın.
                 String email = claims.getSubject();
 
                 Optional<User> userOptional = userRepository.findByEmail(email);
@@ -53,12 +51,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "User is logged out or inactive");
                     return;
                 }
-                // Kullanıcının yetkilerini de çekip Authentication nesnesi oluşturun.
                 UsernamePasswordAuthenticationToken authentication =
                         new UsernamePasswordAuthenticationToken(email, null, new ArrayList<>());
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             } catch (Exception ex) {
-                // Token doğrulama başarısızsa, hata mesajı yazdırın ve isteği reddedin.
                 response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Token invalid");
                 return;
             }
