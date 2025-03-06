@@ -1,0 +1,1145 @@
+{
+	"info": {
+		"_postman_id": "3d65d43e-0fd6-4e52-b60b-30041803435e",
+		"name": "Product Tracking API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16884525"
+	},
+	"item": [
+		{
+			"name": "Kullanıcı ekleme 1",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"if (!pm.request.url.toString().includes(\"/api/auth/login\") &&",
+							"    !pm.request.url.toString().includes(\"/api/users/register\")) {",
+							"    pm.request.headers.add({",
+							"        key: \"Authorization\",",
+							"        value: \"Bearer \" + pm.environment.get(\"access_token\")",
+							"    });",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Eğer istek login ise ve başarılı olduysa, token'ı güncelle",
+							"if (pm.request.url.toString().includes(\"/api/auth/login\") && pm.response.code === 200) {",
+							"    try {",
+							"        let jsonData = pm.response.json();",
+							"        if (jsonData.token) {  // Eğer yanıt içinde access_token varsa",
+							"            pm.environment.set(\"access_token\", jsonData.token);",
+							"            console.log(\"✅ Token kaydedildi:\", jsonData.token);",
+							"        } else {",
+							"            console.warn(\"⚠️ Token alınamadı! Yanıt:\", jsonData);",
+							"        }",
+							"    } catch (e) {",
+							"        console.error(\"🚨 JSON parse hatası:\", e);",
+							"    }",
+							"}",
+							"",
+							"// Eğer istek logout ise ve başarılı olduysa, token'ı temizle",
+							"if (pm.request.url.toString().includes(\"/api/auth/logout\") && pm.response.code === 200) {",
+							"    pm.environment.unset(\"access_token\");",
+							"    console.log(\"🔄 Token temizlendi!\");",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\": \"Ayşe\",\n  \"lastName\": \"Kaya\",\n  \"email\": \"ayse@example.com\",\n  \"password\": \"password123\",\n  \"isActive\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Kullanıcı ekleme 2",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"if (!pm.request.url.toString().includes(\"/api/auth/login\") &&",
+							"    !pm.request.url.toString().includes(\"/api/users/register\")) {",
+							"    pm.request.headers.add({",
+							"        key: \"Authorization\",",
+							"        value: \"Bearer \" + pm.environment.get(\"access_token\")",
+							"    });",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Eğer istek login ise ve başarılı olduysa, token'ı güncelle",
+							"if (pm.request.url.toString().includes(\"/api/auth/login\") && pm.response.code === 200) {",
+							"    try {",
+							"        let jsonData = pm.response.json();",
+							"        if (jsonData.token) {  // Eğer yanıt içinde access_token varsa",
+							"            pm.environment.set(\"access_token\", jsonData.token);",
+							"            console.log(\"✅ Token kaydedildi:\", jsonData.token);",
+							"        } else {",
+							"            console.warn(\"⚠️ Token alınamadı! Yanıt:\", jsonData);",
+							"        }",
+							"    } catch (e) {",
+							"        console.error(\"🚨 JSON parse hatası:\", e);",
+							"    }",
+							"}",
+							"",
+							"// Eğer istek logout ise ve başarılı olduysa, token'ı temizle",
+							"if (pm.request.url.toString().includes(\"/api/auth/logout\") && pm.response.code === 200) {",
+							"    pm.environment.unset(\"access_token\");",
+							"    console.log(\"🔄 Token temizlendi!\");",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\": \"Ayşe\",\n  \"lastName\": \"Kaya\",\n  \"email\": \"ayse@example.com\",\n  \"password\": \"password123\",\n  \"isActive\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Kullanıcı giriş",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"if (!pm.request.url.toString().includes(\"/api/auth/login\") &&",
+							"    !pm.request.url.toString().includes(\"/api/users/register\")) {",
+							"    pm.request.headers.add({",
+							"        key: \"Authorization\",",
+							"        value: \"Bearer \" + pm.environment.get(\"access_token\")",
+							"    });",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Eğer istek login ise ve başarılı olduysa, token'ı güncelle",
+							"if (pm.request.url.toString().includes(\"/api/auth/login\") && pm.response.code === 200) {",
+							"    try {",
+							"        let jsonData = pm.response.json();",
+							"        if (jsonData.token) {  // Eğer yanıt içinde access_token varsa",
+							"            pm.environment.set(\"access_token\", jsonData.token);",
+							"            console.log(\"✅ Token kaydedildi:\", jsonData.token);",
+							"        } else {",
+							"            console.warn(\"⚠️ Token alınamadı! Yanıt:\", jsonData);",
+							"        }",
+							"    } catch (e) {",
+							"        console.error(\"🚨 JSON parse hatası:\", e);",
+							"    }",
+							"}",
+							"",
+							"// Eğer istek logout ise ve başarılı olduysa, token'ı temizle",
+							"if (pm.request.url.toString().includes(\"/api/auth/logout\") && pm.response.code === 200) {",
+							"    pm.environment.unset(\"access_token\");",
+							"    console.log(\"🔄 Token temizlendi!\");",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\": \"Ayşe\",\n  \"lastName\": \"Kaya\",\n  \"email\": \"ayse@example.com\",\n  \"password\": \"password123\",\n  \"isActive\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET users",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"if (!pm.request.url.toString().includes(\"/api/auth/login\") &&",
+							"    !pm.request.url.toString().includes(\"/api/users/register\")) {",
+							"    pm.request.headers.add({",
+							"        key: \"Authorization\",",
+							"        value: \"Bearer \" + pm.environment.get(\"access_token\")",
+							"    });",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Eğer istek login ise ve başarılı olduysa, token'ı güncelle",
+							"if (pm.request.url.toString().includes(\"/api/auth/login\") && pm.response.code === 200) {",
+							"    try {",
+							"        let jsonData = pm.response.json();",
+							"        if (jsonData.token) {  // Eğer yanıt içinde access_token varsa",
+							"            pm.environment.set(\"access_token\", jsonData.token);",
+							"            console.log(\"✅ Token kaydedildi:\", jsonData.token);",
+							"        } else {",
+							"            console.warn(\"⚠️ Token alınamadı! Yanıt:\", jsonData);",
+							"        }",
+							"    } catch (e) {",
+							"        console.error(\"🚨 JSON parse hatası:\", e);",
+							"    }",
+							"}",
+							"",
+							"// Eğer istek logout ise ve başarılı olduysa, token'ı temizle",
+							"if (pm.request.url.toString().includes(\"/api/auth/logout\") && pm.response.code === 200) {",
+							"    pm.environment.unset(\"access_token\");",
+							"    console.log(\"🔄 Token temizlendi!\");",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE users",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"if (!pm.request.url.toString().includes(\"/api/auth/login\") &&",
+							"    !pm.request.url.toString().includes(\"/api/users/register\")) {",
+							"    pm.request.headers.add({",
+							"        key: \"Authorization\",",
+							"        value: \"Bearer \" + pm.environment.get(\"access_token\")",
+							"    });",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Eğer istek login ise ve başarılı olduysa, token'ı güncelle",
+							"if (pm.request.url.toString().includes(\"/api/auth/login\") && pm.response.code === 200) {",
+							"    try {",
+							"        let jsonData = pm.response.json();",
+							"        if (jsonData.token) {  // Eğer yanıt içinde access_token varsa",
+							"            pm.environment.set(\"access_token\", jsonData.token);",
+							"            console.log(\"✅ Token kaydedildi:\", jsonData.token);",
+							"        } else {",
+							"            console.warn(\"⚠️ Token alınamadı! Yanıt:\", jsonData);",
+							"        }",
+							"    } catch (e) {",
+							"        console.error(\"🚨 JSON parse hatası:\", e);",
+							"    }",
+							"}",
+							"",
+							"// Eğer istek logout ise ve başarılı olduysa, token'ı temizle",
+							"if (pm.request.url.toString().includes(\"/api/auth/logout\") && pm.response.code === 200) {",
+							"    pm.environment.unset(\"access_token\");",
+							"    console.log(\"🔄 Token temizlendi!\");",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"MehmetUpdated\",\n    \"lastName\": \"Demir\",\n    \"email\": \"mehmet@example.com\",\n    \"isActive\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users/71",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"71"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE users",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"if (!pm.request.url.toString().includes(\"/api/auth/login\") &&",
+							"    !pm.request.url.toString().includes(\"/api/users/register\")) {",
+							"    pm.request.headers.add({",
+							"        key: \"Authorization\",",
+							"        value: \"Bearer \" + pm.environment.get(\"access_token\")",
+							"    });",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Eğer istek login ise ve başarılı olduysa, token'ı güncelle",
+							"if (pm.request.url.toString().includes(\"/api/auth/login\") && pm.response.code === 200) {",
+							"    try {",
+							"        let jsonData = pm.response.json();",
+							"        if (jsonData.token) {  // Eğer yanıt içinde access_token varsa",
+							"            pm.environment.set(\"access_token\", jsonData.token);",
+							"            console.log(\"✅ Token kaydedildi:\", jsonData.token);",
+							"        } else {",
+							"            console.warn(\"⚠️ Token alınamadı! Yanıt:\", jsonData);",
+							"        }",
+							"    } catch (e) {",
+							"        console.error(\"🚨 JSON parse hatası:\", e);",
+							"    }",
+							"}",
+							"",
+							"// Eğer istek logout ise ve başarılı olduysa, token'ı temizle",
+							"if (pm.request.url.toString().includes(\"/api/auth/logout\") && pm.response.code === 200) {",
+							"    pm.environment.unset(\"access_token\");",
+							"    console.log(\"🔄 Token temizlendi!\");",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"MehmetUpdated\",\n    \"lastName\": \"Demir\",\n    \"email\": \"mehmet@example.com\",\n    \"isActive\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users/68",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"68"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ürün ekleme 1",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"if (!pm.request.url.toString().includes(\"/api/auth/login\") &&",
+							"    !pm.request.url.toString().includes(\"/api/users/register\")) {",
+							"    pm.request.headers.add({",
+							"        key: \"Authorization\",",
+							"        value: \"Bearer \" + pm.environment.get(\"access_token\")",
+							"    });",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Eğer istek login ise ve başarılı olduysa, token'ı güncelle",
+							"if (pm.request.url.toString().includes(\"/api/auth/login\") && pm.response.code === 200) {",
+							"    try {",
+							"        let jsonData = pm.response.json();",
+							"        if (jsonData.token) {  // Eğer yanıt içinde access_token varsa",
+							"            pm.environment.set(\"access_token\", jsonData.token);",
+							"            console.log(\"✅ Token kaydedildi:\", jsonData.token);",
+							"        } else {",
+							"            console.warn(\"⚠️ Token alınamadı! Yanıt:\", jsonData);",
+							"        }",
+							"    } catch (e) {",
+							"        console.error(\"🚨 JSON parse hatası:\", e);",
+							"    }",
+							"}",
+							"",
+							"// Eğer istek logout ise ve başarılı olduysa, token'ı temizle",
+							"if (pm.request.url.toString().includes(\"/api/auth/logout\") && pm.response.code === 200) {",
+							"    pm.environment.unset(\"access_token\");",
+							"    console.log(\"🔄 Token temizlendi!\");",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Mac\",\n  \"type\": \"Electronics\",\n  \"quantity\": 9\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ürün ekleme 2",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"if (!pm.request.url.toString().includes(\"/api/auth/login\") &&",
+							"    !pm.request.url.toString().includes(\"/api/users/register\")) {",
+							"    pm.request.headers.add({",
+							"        key: \"Authorization\",",
+							"        value: \"Bearer \" + pm.environment.get(\"access_token\")",
+							"    });",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Eğer istek login ise ve başarılı olduysa, token'ı güncelle",
+							"if (pm.request.url.toString().includes(\"/api/auth/login\") && pm.response.code === 200) {",
+							"    try {",
+							"        let jsonData = pm.response.json();",
+							"        if (jsonData.token) {  // Eğer yanıt içinde access_token varsa",
+							"            pm.environment.set(\"access_token\", jsonData.token);",
+							"            console.log(\"✅ Token kaydedildi:\", jsonData.token);",
+							"        } else {",
+							"            console.warn(\"⚠️ Token alınamadı! Yanıt:\", jsonData);",
+							"        }",
+							"    } catch (e) {",
+							"        console.error(\"🚨 JSON parse hatası:\", e);",
+							"    }",
+							"}",
+							"",
+							"// Eğer istek logout ise ve başarılı olduysa, token'ı temizle",
+							"if (pm.request.url.toString().includes(\"/api/auth/logout\") && pm.response.code === 200) {",
+							"    pm.environment.unset(\"access_token\");",
+							"    console.log(\"🔄 Token temizlendi!\");",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"IPhone\",\n  \"type\": \"Electronics\",\n  \"quantity\": 20\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET products",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"if (!pm.request.url.toString().includes(\"/api/auth/login\") &&",
+							"    !pm.request.url.toString().includes(\"/api/users/register\")) {",
+							"    pm.request.headers.add({",
+							"        key: \"Authorization\",",
+							"        value: \"Bearer \" + pm.environment.get(\"access_token\")",
+							"    });",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Eğer istek login ise ve başarılı olduysa, token'ı güncelle",
+							"if (pm.request.url.toString().includes(\"/api/auth/login\") && pm.response.code === 200) {",
+							"    try {",
+							"        let jsonData = pm.response.json();",
+							"        if (jsonData.token) {  // Eğer yanıt içinde access_token varsa",
+							"            pm.environment.set(\"access_token\", jsonData.token);",
+							"            console.log(\"✅ Token kaydedildi:\", jsonData.token);",
+							"        } else {",
+							"            console.warn(\"⚠️ Token alınamadı! Yanıt:\", jsonData);",
+							"        }",
+							"    } catch (e) {",
+							"        console.error(\"🚨 JSON parse hatası:\", e);",
+							"    }",
+							"}",
+							"",
+							"// Eğer istek logout ise ve başarılı olduysa, token'ı temizle",
+							"if (pm.request.url.toString().includes(\"/api/auth/logout\") && pm.response.code === 200) {",
+							"    pm.environment.unset(\"access_token\");",
+							"    console.log(\"🔄 Token temizlendi!\");",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE products",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"if (!pm.request.url.toString().includes(\"/api/auth/login\") &&",
+							"    !pm.request.url.toString().includes(\"/api/users/register\")) {",
+							"    pm.request.headers.add({",
+							"        key: \"Authorization\",",
+							"        value: \"Bearer \" + pm.environment.get(\"access_token\")",
+							"    });",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Eğer istek login ise ve başarılı olduysa, token'ı güncelle",
+							"if (pm.request.url.toString().includes(\"/api/auth/login\") && pm.response.code === 200) {",
+							"    try {",
+							"        let jsonData = pm.response.json();",
+							"        if (jsonData.token) {  // Eğer yanıt içinde access_token varsa",
+							"            pm.environment.set(\"access_token\", jsonData.token);",
+							"            console.log(\"✅ Token kaydedildi:\", jsonData.token);",
+							"        } else {",
+							"            console.warn(\"⚠️ Token alınamadı! Yanıt:\", jsonData);",
+							"        }",
+							"    } catch (e) {",
+							"        console.error(\"🚨 JSON parse hatası:\", e);",
+							"    }",
+							"}",
+							"",
+							"// Eğer istek logout ise ve başarılı olduysa, token'ı temizle",
+							"if (pm.request.url.toString().includes(\"/api/auth/logout\") && pm.response.code === 200) {",
+							"    pm.environment.unset(\"access_token\");",
+							"    console.log(\"🔄 Token temizlendi!\");",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Mac\",\n    \"type\": \"Electronics\",\n    \"quantity\": 7\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/products/34",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products",
+						"34"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE products",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"if (!pm.request.url.toString().includes(\"/api/auth/login\") &&",
+							"    !pm.request.url.toString().includes(\"/api/users/register\")) {",
+							"    pm.request.headers.add({",
+							"        key: \"Authorization\",",
+							"        value: \"Bearer \" + pm.environment.get(\"access_token\")",
+							"    });",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Eğer istek login ise ve başarılı olduysa, token'ı güncelle",
+							"if (pm.request.url.toString().includes(\"/api/auth/login\") && pm.response.code === 200) {",
+							"    try {",
+							"        let jsonData = pm.response.json();",
+							"        if (jsonData.token) {  // Eğer yanıt içinde access_token varsa",
+							"            pm.environment.set(\"access_token\", jsonData.token);",
+							"            console.log(\"✅ Token kaydedildi:\", jsonData.token);",
+							"        } else {",
+							"            console.warn(\"⚠️ Token alınamadı! Yanıt:\", jsonData);",
+							"        }",
+							"    } catch (e) {",
+							"        console.error(\"🚨 JSON parse hatası:\", e);",
+							"    }",
+							"}",
+							"",
+							"// Eğer istek logout ise ve başarılı olduysa, token'ı temizle",
+							"if (pm.request.url.toString().includes(\"/api/auth/logout\") && pm.response.code === 200) {",
+							"    pm.environment.unset(\"access_token\");",
+							"    console.log(\"🔄 Token temizlendi!\");",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Mac\",\n    \"type\": \"Electronics\",\n    \"quantity\": 7\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/products/35",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products",
+						"35"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Kullanıcı giriş 3",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"if (!pm.request.url.toString().includes(\"/api/auth/login\") &&",
+							"    !pm.request.url.toString().includes(\"/api/users/register\")) {",
+							"    pm.request.headers.add({",
+							"        key: \"Authorization\",",
+							"        value: \"Bearer \" + pm.environment.get(\"access_token\")",
+							"    });",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Eğer istek login ise ve başarılı olduysa, token'ı güncelle",
+							"if (pm.request.url.toString().includes(\"/api/auth/login\") && pm.response.code === 200) {",
+							"    try {",
+							"        let jsonData = pm.response.json();",
+							"        if (jsonData.token) {  // Eğer yanıt içinde access_token varsa",
+							"            pm.environment.set(\"access_token\", jsonData.token);",
+							"            console.log(\"✅ Token kaydedildi:\", jsonData.token);",
+							"        } else {",
+							"            console.warn(\"⚠️ Token alınamadı! Yanıt:\", jsonData);",
+							"        }",
+							"    } catch (e) {",
+							"        console.error(\"🚨 JSON parse hatası:\", e);",
+							"    }",
+							"}",
+							"",
+							"// Eğer istek logout ise ve başarılı olduysa, token'ı temizle",
+							"if (pm.request.url.toString().includes(\"/api/auth/logout\") && pm.response.code === 200) {",
+							"    pm.environment.unset(\"access_token\");",
+							"    console.log(\"🔄 Token temizlendi!\");",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"sunbul@example.com\",\n  \"password\": \"sifre123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Kullanıcı çıkış",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"if (!pm.request.url.toString().includes(\"/api/auth/login\") &&",
+							"    !pm.request.url.toString().includes(\"/api/users/register\")) {",
+							"    pm.request.headers.add({",
+							"        key: \"Authorization\",",
+							"        value: \"Bearer \" + pm.environment.get(\"access_token\")",
+							"    });",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Eğer istek login ise ve başarılı olduysa, token'ı güncelle",
+							"if (pm.request.url.toString().includes(\"/api/auth/login\") && pm.response.code === 200) {",
+							"    try {",
+							"        let jsonData = pm.response.json();",
+							"        if (jsonData.token) {  // Eğer yanıt içinde access_token varsa",
+							"            pm.environment.set(\"access_token\", jsonData.token);",
+							"            console.log(\"✅ Token kaydedildi:\", jsonData.token);",
+							"        } else {",
+							"            console.warn(\"⚠️ Token alınamadı! Yanıt:\", jsonData);",
+							"        }",
+							"    } catch (e) {",
+							"        console.error(\"🚨 JSON parse hatası:\", e);",
+							"    }",
+							"}",
+							"",
+							"// Eğer istek logout ise ve başarılı olduysa, token'ı temizle",
+							"if (pm.request.url.toString().includes(\"/api/auth/logout\") && pm.response.code === 200) {",
+							"    pm.environment.unset(\"access_token\");",
+							"    console.log(\"🔄 Token temizlendi!\");",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"sunbul@example.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Yetkisiz işlem (403 Forbidden)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"if (!pm.request.url.toString().includes(\"/api/auth/login\") &&",
+							"    !pm.request.url.toString().includes(\"/api/users/register\")) {",
+							"    pm.request.headers.add({",
+							"        key: \"Authorization\",",
+							"        value: \"Bearer \" + pm.environment.get(\"access_token\")",
+							"    });",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Eğer istek login ise ve başarılı olduysa, token'ı güncelle",
+							"if (pm.request.url.toString().includes(\"/api/auth/login\") && pm.response.code === 200) {",
+							"    try {",
+							"        let jsonData = pm.response.json();",
+							"        if (jsonData.token) {  // Eğer yanıt içinde access_token varsa",
+							"            pm.environment.set(\"access_token\", jsonData.token);",
+							"            console.log(\"✅ Token kaydedildi:\", jsonData.token);",
+							"        } else {",
+							"            console.warn(\"⚠️ Token alınamadı! Yanıt:\", jsonData);",
+							"        }",
+							"    } catch (e) {",
+							"        console.error(\"🚨 JSON parse hatası:\", e);",
+							"    }",
+							"}",
+							"",
+							"// Eğer istek logout ise ve başarılı olduysa, token'ı temizle",
+							"if (pm.request.url.toString().includes(\"/api/auth/logout\") && pm.response.code === 200) {",
+							"    pm.environment.unset(\"access_token\");",
+							"    console.log(\"🔄 Token temizlendi!\");",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
