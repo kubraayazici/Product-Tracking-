@@ -21,8 +21,7 @@
 							"    });",
 							"}"
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				},
 				{
@@ -50,8 +49,7 @@
 							"    console.log(\"🔄 Token temizlendi!\");",
 							"}"
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -67,7 +65,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"firstName\": \"Ayşe\",\n  \"lastName\": \"Kaya\",\n  \"email\": \"ayse@example.com\",\n  \"password\": \"password123\",\n  \"isActive\": false\n}",
+					"raw": "{\n  \"firstName\": \"Selma\",\n  \"lastName\": \"Kaya\",\n  \"email\": \"selma@example.com\",\n  \"password\": \"password123\",\n  \"isActive\": false\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -105,8 +103,7 @@
 							"    });",
 							"}"
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				},
 				{
@@ -134,8 +131,7 @@
 							"    console.log(\"🔄 Token temizlendi!\");",
 							"}"
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -151,7 +147,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"firstName\": \"Ayşe\",\n  \"lastName\": \"Kaya\",\n  \"email\": \"ayse@example.com\",\n  \"password\": \"password123\",\n  \"isActive\": false\n}",
+					"raw": "{\n  \"firstName\": \"Caner\",\n  \"lastName\": \"Kaya\",\n  \"email\": \"caner@example.com\",\n  \"password\": \"password123\",\n  \"isActive\": false\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -189,8 +185,7 @@
 							"    });",
 							"}"
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				},
 				{
@@ -218,8 +213,7 @@
 							"    console.log(\"🔄 Token temizlendi!\");",
 							"}"
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -235,7 +229,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"firstName\": \"Ayşe\",\n  \"lastName\": \"Kaya\",\n  \"email\": \"ayse@example.com\",\n  \"password\": \"password123\",\n  \"isActive\": false\n}",
+					"raw": "{\n  \"email\": \"caner@example.com\",\n  \"password\": \"password123\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -243,7 +237,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/users/register",
+					"raw": "http://localhost:8080/api/auth/login",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -251,8 +245,8 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"users",
-						"register"
+						"auth",
+						"login"
 					]
 				}
 			},
@@ -346,8 +340,7 @@
 							"    });",
 							"}"
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				},
 				{
@@ -375,8 +368,7 @@
 							"    console.log(\"🔄 Token temizlendi!\");",
 							"}"
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -391,7 +383,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"firstName\": \"MehmetUpdated\",\n    \"lastName\": \"Demir\",\n    \"email\": \"mehmet@example.com\",\n    \"isActive\": false\n}",
+					"raw": "{\n    \"firstName\": \"MehmetUpdated1\",\n    \"lastName\": \"Demir\",\n    \"email\": \"mehmet@example.com\",\n    \"isActive\": false\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -429,8 +421,7 @@
 							"    });",
 							"}"
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				},
 				{
@@ -458,8 +449,7 @@
 							"    console.log(\"🔄 Token temizlendi!\");",
 							"}"
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -482,7 +472,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/users/68",
+					"raw": "http://localhost:8080/api/users/67",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -491,7 +481,7 @@
 					"path": [
 						"api",
 						"users",
-						"68"
+						"67"
 					]
 				}
 			},
@@ -512,8 +502,7 @@
 							"    });",
 							"}"
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				},
 				{
@@ -541,8 +530,7 @@
 							"    console.log(\"🔄 Token temizlendi!\");",
 							"}"
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -557,7 +545,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"name\": \"Mac\",\n  \"type\": \"Electronics\",\n  \"quantity\": 9\n}",
+					"raw": "{\n  \"name\": \"Macbook Pro M4\",\n  \"type\": \"Electronics\",\n  \"quantity\": 3\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -749,8 +737,7 @@
 							"    });",
 							"}"
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				},
 				{
@@ -778,8 +765,7 @@
 							"    console.log(\"🔄 Token temizlendi!\");",
 							"}"
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -794,7 +780,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Mac\",\n    \"type\": \"Electronics\",\n    \"quantity\": 7\n}",
+					"raw": "{\n    \"name\": \"Mac\",\n    \"type\": \"Electronics\",\n    \"quantity\": 8\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -832,8 +818,7 @@
 							"    });",
 							"}"
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				},
 				{
@@ -861,8 +846,7 @@
 							"    console.log(\"🔄 Token temizlendi!\");",
 							"}"
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -885,7 +869,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/products/35",
+					"raw": "http://localhost:8080/api/products/2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -894,7 +878,7 @@
 					"path": [
 						"api",
 						"products",
-						"35"
+						"2"
 					]
 				}
 			},
@@ -915,8 +899,7 @@
 							"    });",
 							"}"
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				},
 				{
@@ -944,8 +927,7 @@
 							"    console.log(\"🔄 Token temizlendi!\");",
 							"}"
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -961,7 +943,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"email\": \"sunbul@example.com\",\n  \"password\": \"sifre123\"\n}",
+					"raw": "{\n  \"email\": \"caner@example.com\",\n  \"password\": \"password123\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -999,8 +981,7 @@
 							"    });",
 							"}"
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				},
 				{
@@ -1028,8 +1009,7 @@
 							"    console.log(\"🔄 Token temizlendi!\");",
 							"}"
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -1045,7 +1025,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"email\": \"sunbul@example.com\"\n}",
+					"raw": "{\n  \"email\": \"caner@example.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
